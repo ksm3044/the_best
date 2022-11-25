@@ -158,7 +158,12 @@ if (reversed == null) { reversed = false; }
 		const buttons = [this.btnCow, this.btnCar];
 		
 		
-		
+		this.questionMovie.visible = false;
+		this.showBoat.visible = false;
+		this.showCow.visible = false;
+		this.hideBoat.visible = false;
+		this.hideCow.visible = false;
+		this.popupMovie.visible = false;
 		
 		function playSound(){
 			const sound = new Audio();
@@ -220,7 +225,13 @@ if (reversed == null) { reversed = false; }
 			this.MainVideoId.play();
 			event.currentTarget.visible = false;
 			this.MainVideoId.addEventListener('timeupdate', handlers.handleVidDuration.bind(this));
-			playMovie()
+			root.questionMovie.visible = true;
+			root.showBoat.visible = true;
+			root.showCow.visible = true;
+			root.hideBoat.visible = true;
+			root.hideCow.visible = true;
+			root.popupMovie.visible = true;
+			
 		});
 		
 		
