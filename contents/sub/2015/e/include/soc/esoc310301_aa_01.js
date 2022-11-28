@@ -203,7 +203,7 @@ if (reversed == null) { reversed = false; }
 				if (vid) {
 					vid.addEventListener('timeupdate', handlers.handleVidDuration.bind(this));
 				}
-			}, 100)
+			}, 4000)
 			
 		}
 		
