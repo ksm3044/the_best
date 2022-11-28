@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"transport_1_atlas_1", frames: [[0,537,303,97],[305,537,303,97],[0,0,1087,535]]}
+		{name:"transport_atlas_1", frames: [[0,0,303,97],[0,99,303,97]]}
 ];
 
 
@@ -28,22 +28,15 @@ lib.ssMetadata = [
 
 
 (lib.btnCarpngcopy2 = function() {
-	this.initialize(ss["transport_1_atlas_1"]);
+	this.initialize(ss["transport_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.btnCowpngcopy = function() {
-	this.initialize(ss["transport_1_atlas_1"]);
+	this.initialize(ss["transport_atlas_1"]);
 	this.gotoAndStop(1);
-}).prototype = p = new cjs.Sprite();
-
-
-
-(lib.startBtn = function() {
-	this.initialize(ss["transport_1_atlas_1"]);
-	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -60,29 +53,6 @@ p._handleDrawEnd = _handleDrawEnd;
 p._updateVisibility = _updateVisibility;
 p.draw = _componentDraw;
 
-
-
-(lib.startBtn_1 = function(mode,startPosition,loop,reversed) {
-if (loop == null) { loop = true; }
-if (reversed == null) { reversed = false; }
-	var props = new Object();
-	props.mode = mode;
-	props.startPosition = startPosition;
-	props.labels = {};
-	props.loop = loop;
-	props.reversed = reversed;
-	cjs.MovieClip.apply(this,[props]);
-
-	// Layer_1
-	this.instance = new lib.startBtn();
-	this.instance.setTransform(0,0,0.7324,0.7324);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
-	this._renderFirstFrame();
-
-}).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(0,0,796.2,391.9);
 
 
 (lib.btnCow = function(mode,startPosition,loop,reversed) {
@@ -157,7 +127,6 @@ if (reversed == null) { reversed = false; }
 		
 		const buttons = [this.btnCow, this.btnCar];
 		
-		
 		this.questionMovie.visible = false;
 		this.showBoat.visible = false;
 		this.showCow.visible = false;
@@ -165,11 +134,6 @@ if (reversed == null) { reversed = false; }
 		this.hideCow.visible = false;
 		this.popupMovie.visible = false;
 		
-		function playSound(){
-			const sound = new Audio();
-			sound.src = "./sound/1.mp3"
-			sound.play()
-		}
 		
 		const handlers = {
 			clickChooseBtn(event) {
@@ -177,16 +141,17 @@ if (reversed == null) { reversed = false; }
 				console.log(this.MainVideoId);
 				
 			},
-			handleVidDuration () {
-				if (this.MainVideoId.currentTime > 9 && this.MainVideoId.currentTime < 10) {
+			handleVidDuration (event) {
+				
+				if (event.currentTarget.currentTime > 9 && event.currentTarget.currentTime < 10) {
 					this.MainVideoId.pause();
 					buttons.forEach(elm => {
 						elm.visible = true;
 					});
 				}
 				
-				if (this.MainVideoId.currentTime > 165 && this.MainVideoId.currentTime < 166) {
-					this.MainVideoId.pause();
+				if (event.currentTarget.currentTime > 165 && event.currentTarget.currentTime < 166) {
+					event.currentTarget.pause();
 					methods.handleHide();
 					playMovie()
 					document.getElementById("questionMovie").parentElement.style.display = "block";
@@ -206,6 +171,7 @@ if (reversed == null) { reversed = false; }
 			}
 		}
 		
+		
 		buttons.forEach(function(elm) {
 			elm.visible = false;
 		});
@@ -221,19 +187,25 @@ if (reversed == null) { reversed = false; }
 			 }
 		});
 		
-		this.startBtn.addEventListener('click', function(event) {
-			this.MainVideoId.play();
-			event.currentTarget.visible = false;
-			this.MainVideoId.addEventListener('timeupdate', handlers.handleVidDuration.bind(this));
-			root.questionMovie.visible = true;
-			root.showBoat.visible = true;
-			root.showCow.visible = true;
-			root.hideBoat.visible = true;
-			root.hideCow.visible = true;
-			root.popupMovie.visible = true;
-			
-		});
 		
+		
+		function bind () {
+			setTimeout(function() {
+				root.questionMovie.visible = true;
+				root.showBoat.visible = true;
+				root.showCow.visible = true;
+				root.hideBoat.visible = true;
+				root.hideCow.visible = true;
+				root.popupMovie.visible = true;
+				const vid = document.querySelector('#MainVideoId');
+
+
+				if (vid) {
+					vid.addEventListener('timeupdate', handlers.handleVidDuration.bind(this));
+				}
+			}, 100)
+			
+		}
 		
 		
 		function correctAnswer() {
@@ -280,7 +252,7 @@ if (reversed == null) { reversed = false; }
 				eventBool = true;
 			},
 			clickCow() {
-				playSound()
+				createjs.Sound.play("clickBtnSound")
 				eventBool = false
 				document.getElementById("MainVideoId").pause();
 				document.getElementById("showBoat").parentElement.style.display = "none"
@@ -296,21 +268,16 @@ if (reversed == null) { reversed = false; }
 				document.getElementById("questionMovie").parentElement.style.display = "block";
 				document.getElementById("showBoat").parentElement.style.display = "block";
 				document.getElementById("showCow").parentElement.style.display = "block";
-			}
+			},
 		}
+		
+		
+		bind();
 		this.pointerEvents = "none";
 	}
 
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
-
-	// Actions
-	this.startBtn = new lib.startBtn_1();
-	this.startBtn.name = "startBtn";
-	this.startBtn.setTransform(957.65,423.8,0.7739,0.74,0,0,0,398.2,196.4);
-	new cjs.ButtonHelper(this.startBtn, 0, 1, 1);
-
-	this.timeline.addTween(cjs.Tween.get(this.startBtn).wait(1));
 
 	// hideVideos
 	this.hideBoat = new lib.an_Video({'id': 'hideBoat', 'src':'videos/hideBoat.webm', 'autoplay':true, 'controls':false, 'muted':false, 'loop':true, 'poster':'', 'preload':false, 'class':'video'});
@@ -362,7 +329,7 @@ if (reversed == null) { reversed = false; }
 	this.btnCow.setTransform(593.65,697.2,0.8875,0.8875,0,0,0,151.7,48.7);
 	new cjs.ButtonHelper(this.btnCow, 0, 1, 1);
 
-	this.MainVideoId = new lib.an_Video({'id': 'MainVideoId', 'src':'videos/교통수단_11_22_수정2.mp4', 'autoplay':false, 'controls':false, 'muted':false, 'loop':false, 'poster':'', 'preload':true, 'class':'video'});
+	this.MainVideoId = new lib.an_Video({'id': 'MainVideoId', 'src':'videos/교통수단_11_22_수정2.mp4', 'autoplay':true, 'controls':false, 'muted':false, 'loop':false, 'poster':'', 'preload':true, 'class':'video'});
 
 	this.MainVideoId.name = "MainVideoId";
 	this.MainVideoId.setTransform(960,539.65,4.7999,3.5999,0,0,0,200,149.9);
@@ -382,7 +349,8 @@ lib.properties = {
 	color: "#333333",
 	opacity: 0.00,
 	manifest: [
-		{src:"images/transport_1_atlas_1.png", id:"transport_1_atlas_1"},
+		{src:"images/transport_atlas_1.png", id:"transport_atlas_1"},
+		{src:"sounds/clickBtnSound.mp3", id:"clickBtnSound"},
 		{src:"https://code.jquery.com/jquery-3.4.1.min.js", id:"lib/jquery-3.4.1.min.js"},
 		{src:"components/sdk/anwidget.js", id:"sdk/anwidget.js"},
 		{src:"components/video/src/video.js", id:"an.Video"}
@@ -534,6 +502,21 @@ an.handleSoundStreamOnTick = function(event) {
 		var stageChild = stage.getChildAt(0);
 		if(!stageChild.paused || stageChild.ignorePause){
 			stageChild.syncStreamSounds();
+		}
+	}
+}
+an.handleFilterCache = function(event) {
+	if(!event.paused){
+		var target = event.target;
+		if(target){
+			if(target.filterCacheList){
+				for(var index = 0; index < target.filterCacheList.length ; index++){
+					var cacheInst = target.filterCacheList[index];
+					if((cacheInst.startFrame <= target.currentFrame) && (target.currentFrame <= cacheInst.endFrame)){
+						cacheInst.instance.cache(cacheInst.x, cacheInst.y, cacheInst.w, cacheInst.h);
+					}
+				}
+			}
 		}
 	}
 }
