@@ -167,7 +167,6 @@ if (reversed == null) { reversed = false; }
 					document.getElementById("showCow").parentElement.style.cursor = "pointer"
 					document.getElementById("showCow").addEventListener("click", methods.clickCow.bind(this))
 				}
-				document.getElementById("popupMovie").parentElement.addEventListener("click",methods.clickPopup.bind(this))
 			}
 		}
 		
@@ -201,6 +200,7 @@ if (reversed == null) { reversed = false; }
 
 
 				if (vid) {
+					this.MainVideoId.currentTime = 160
 					vid.addEventListener('timeupdate', handlers.handleVidDuration.bind(this));
 				}
 			}, 4000)
@@ -223,9 +223,11 @@ if (reversed == null) { reversed = false; }
 		function showPopup() {
 			this.popupMovie.currentTime = 0;
 			this.popupMovie.play();
-			document.getElementById("popupMovie").parentElement.style.cursor = "pointer";
 			document.getElementById("popupMovie").parentElement.style.zIndex = "2";
 			document.getElementById("popupMovie").parentElement.style.display = "block"
+			setTimeout(() => {
+				methods.clickPopup();
+			},2500)
 		}
 		
 		
@@ -262,7 +264,6 @@ if (reversed == null) { reversed = false; }
 				showPopup()
 			},
 			clickPopup() {
-				this.MainVideoId.currentFrame = 165
 				methods.handleHide();
 				document.getElementById("showCow").parentElement.style.zIndex = "1"
 				document.getElementById("questionMovie").parentElement.style.display = "block";
