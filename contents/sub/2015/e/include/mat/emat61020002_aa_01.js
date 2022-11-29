@@ -3,8 +3,8 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"RotateTriangle2Shape_atlas_1", frames: [[0,0,1921,1081]]},
-		{name:"RotateTriangle2Shape_atlas_2", frames: [[0,1083,465,465],[0,0,1921,1081]]}
+		{name:"emat61020002_aa_01_atlas_1", frames: [[0,1082,465,465],[0,0,1920,1080]]},
+		{name:"emat61020002_aa_01_atlas_2", frames: [[0,0,1920,1080]]}
 ];
 
 
@@ -29,21 +29,21 @@ lib.ssMetadata = [
 
 
 (lib.CachedBmp_1 = function() {
-	this.initialize(ss["RotateTriangle2Shape_atlas_2"]);
+	this.initialize(ss["emat61020002_aa_01_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.자산2 = function() {
-	this.initialize(ss["RotateTriangle2Shape_atlas_1"]);
+(lib.인터렉션1 = function() {
+	this.initialize(ss["emat61020002_aa_01_atlas_2"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.자산3 = function() {
-	this.initialize(ss["RotateTriangle2Shape_atlas_2"]);
+(lib.인터렉션2 = function() {
+	this.initialize(ss["emat61020002_aa_01_atlas_1"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
@@ -79,7 +79,7 @@ p.draw = _componentDraw;
 
 
 
-(lib.triangleBg = function(mode,startPosition,loop,reversed) {
+(lib.triangleBgLast = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -91,16 +91,16 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Layer_1
-	this.instance = new lib.자산2();
+	this.instance = new lib.인터렉션1();
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.triangleBg, new cjs.Rectangle(0,0,1921,1081), null);
+}).prototype = getMCSymbolPrototype(lib.triangleBgLast, new cjs.Rectangle(0,0,1920,1080), null);
 
 
-(lib.rectangleBg = function(mode,startPosition,loop,reversed) {
+(lib.rectangleBgLast = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -112,14 +112,13 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Layer_1
-	this.instance = new lib.자산3();
-	this.instance.setTransform(-1,0);
+	this.instance = new lib.인터렉션2();
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.rectangleBg, new cjs.Rectangle(-1,0,1921,1081), null);
+}).prototype = getMCSymbolPrototype(lib.rectangleBgLast, new cjs.Rectangle(0,0,1920,1080), null);
 
 
 (lib.ClipGroup = function(mode,startPosition,loop,reversed) {
@@ -377,7 +376,7 @@ if (reversed == null) { reversed = false; }
 			renderSceneInfo: function(sceneInfo) {
 				const {scene, camera, elem} = sceneInfo;
 				const renderer = new THREE.WebGLRenderer();
-				renderer.setClearColor( '#fff', 0);
+				renderer.setClearColor( '#000', 0.4);
 				const size = methods.calcSize();
 				renderer.setSize(size[0], size[1]);
 				document.querySelector(elem).appendChild(renderer.domElement);
@@ -464,27 +463,31 @@ if (reversed == null) { reversed = false; }
 					curr.style.pointerEvents = 'none';
 				}
 				
-				setTimeout(function() {
-					methods.hideCanvas(currentId, root);
-				}, 2000);
+				methods.hideCanvas(currentId, root);
 			},
 			hideCanvas: function(currentId, root) {
 				
 				if (currentId === '#angle3') {
-					const elem = document.querySelector('#angle3');
-					elem.style.display = 'none';
-					elm.title.angle3.style.display = 'none';
-					elm.triangleBg.visible = false;
-					root.MainVideoId.currentTime = 81;
-					root.MainVideoId.play();
+					root.MainVideoId.currentTime = 80.8;
+					createjs.Sound.play('triangleSound');
+					setTimeout(function() {
+						const elem = document.querySelector('#angle3');
+						elem.style.display = 'none';
+						elm.triangleBg.visible = false;
+						elm.title.angle3.style.display = 'none';
+						root.MainVideoId.play();
+					}, 4000);
 				} else {
-					const elem = document.querySelector('#angle4');
-					elem.style.display = 'none';
-					elm.title.angle4.style.display = 'none';
-					elm.title.angle5.style.display = 'none';
-					elm.rectangleBg.visible = false;
-					root.MainVideoId.currentTime = 135.2;
-					root.MainVideoId.play();
+					root.MainVideoId.currentTime = 130.1;
+					createjs.Sound.play('rectangleSound');
+					setTimeout(function() {
+						const elem = document.querySelector('#angle4');
+						elem.style.display = 'none';
+						elm.title.angle4.style.display = 'none';
+						elm.title.angle5.style.display = 'none';
+						elm.rectangleBg.visible = false;
+						root.MainVideoId.play();
+					}, 6000);
 				}
 			},
 			checkSelectedObj: function(obj) {
@@ -522,8 +525,8 @@ if (reversed == null) { reversed = false; }
 					params.find.triangle = true;
 					
 					setTimeout(function() {
-						//elm.title.angle3.style.display = 'block';
-						methods.removeCountDown('#angle3', this);	
+						elm.title.angle3.style.display = 'block';
+						methods.removeCountDown('#angle3', this);
 					}, 2000);
 					
 		
@@ -557,9 +560,9 @@ if (reversed == null) { reversed = false; }
 					params.find.rectangle = true;
 					
 					setTimeout(function() {
-						//elm.title.angle4.style.display = 'block';
-						//elm.title.angle5.style.display = 'block';
-						methods.removeCountDown('#angle4', this);	
+						elm.title.angle4.style.display = 'block';
+						elm.title.angle5.style.display = 'block';
+						methods.removeCountDown('#angle4', this);
 					}, 2000);
 				}
 				
@@ -571,13 +574,14 @@ if (reversed == null) { reversed = false; }
 					elm.button.reload.angle3.visible = true;
 				}
 				
-				if (vid.currentTime > 133 && vid.currentTime < 134) {
+				if (vid.currentTime > 128 && vid.currentTime < 129) {
 					vid.pause();
 					elm.button.reload.angle4.visible = true;
 					elm.button.reload.angle5.visible = true;
 				}
 			},
 			showTrianleCoord: function(event) {
+				event.currentTarget.visible = false;
 				const elem = document.querySelector('#angle3');
 				handlers.createStage();
 				elem.style.display = 'block';
@@ -590,7 +594,6 @@ if (reversed == null) { reversed = false; }
 				obj.play();
 				createjs.Sound.play('countDownSound');
 				obj.addEventListener('ended', handlers.countDown.bind(this));
-				event.currentTarget.visible = false;
 		
 			},
 			showRectangleCoord: function(event) {
@@ -661,7 +664,7 @@ if (reversed == null) { reversed = false; }
 						elm.selectedObj.push(obj[0].uuid);
 					}
 					
-					//elm.title.angle4.style.display = 'block';
+					elm.title.angle4.style.display = 'block';
 				}
 				
 				if (obj[1].rotation.x > 1.45 || obj[1].rotation.x < -1.45) {
@@ -669,7 +672,7 @@ if (reversed == null) { reversed = false; }
 						elm.selectedObj.push(obj[1].uuid);
 					}
 					
-					//elm.title.angle5.style.display = 'block';
+					elm.title.angle5.style.display = 'block';
 				}
 				
 				console.log(elm.selectedObj);
@@ -776,7 +779,7 @@ if (reversed == null) { reversed = false; }
 				const obj = el.children[0];
 				
 				if (obj.rotation.x > 1.45 || obj.rotation.x < -1.45) {
-					//elm.title.angle3.style.display = 'block';
+					elm.title.angle3.style.display = 'block';
 					methods.removeCountDown('#angle3', this);
 				}
 				
@@ -856,8 +859,8 @@ if (reversed == null) { reversed = false; }
 			html += '</div>';
 			
 			svg.innerHTML = html;
-			svg.style.top = '20vh';
-			svg.style.left = '10vw';
+			svg.style.top = '15vh';
+			svg.style.left = '15vw';
 			svg.style.display = 'none';
 			svg.style.zIndex = '20';
 			document.body.appendChild(svg);
@@ -888,12 +891,8 @@ if (reversed == null) { reversed = false; }
 			html += '</div>';
 			
 			svg2.innerHTML = html;
-			svg2.style.top = '20vh';
-			if (window.innerWidth > 800) {
-				svg2.style.left = (size[0] - 700) + 'px';	
-			} else {
-				svg2.style.right = '10vw';
-			}
+			svg2.style.top = '15vh';
+			svg2.style.left = (size[0] - 700) + 'px';	
 			
 			svg2.style.display = 'none';
 			svg2.style.zIndex = '20';
@@ -923,10 +922,10 @@ if (reversed == null) { reversed = false; }
 			html += '</g></svg>'
 			html += '</div>';
 			svg3.innerHTML = html;
-			svg3.style.top = '20vh';
+			svg3.style.top = '15vh';
 			elm.title.angle5 = svg3;
 			
-			if (window.innerWidth > 800) {
+			if (size[0] > 800) {
 				svg3.style.left = (size[0] - 600) + 'px';	
 			} else {
 				svg3.style.right = '10vw';
@@ -958,7 +957,8 @@ if (reversed == null) { reversed = false; }
 					const vid = document.querySelector('#MainVideoId');
 					if (vid) {
 						//vid.play();
-						//vid.currentTime = 70;
+						//vid.currentTime = 75;
+						//vid.currentTime = 125;
 						vid.addEventListener('timeupdate', handlers.updateVid);
 					}
 				}, 100);
@@ -992,13 +992,13 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.showTriangle},{t:this.showRectangle1},{t:this.showRectangle2}]}).wait(1));
 
 	// video
-	this.rectangleBg = new lib.rectangleBg();
-	this.rectangleBg.name = "rectangleBg";
-	this.rectangleBg.setTransform(960.5,539.5,1,1,0,0,0,960.5,540.5);
-
-	this.triangleBg = new lib.triangleBg();
+	this.triangleBg = new lib.triangleBgLast();
 	this.triangleBg.name = "triangleBg";
-	this.triangleBg.setTransform(960.5,540.5,1,1,0,0,0,960.5,540.5);
+	this.triangleBg.setTransform(960,540,1,1,0,0,0,960,540);
+
+	this.rectangleBg = new lib.rectangleBgLast();
+	this.rectangleBg.name = "rectangleBg";
+	this.rectangleBg.setTransform(960,540,1,1,0,0,0,960,540);
 
 	this.countdownVid = new lib.an_Video({'id': 'countdownVid', 'src':'videos/n8gu2-stub3.webm', 'autoplay':false, 'controls':false, 'muted':false, 'loop':false, 'poster':'', 'preload':true, 'class':'video'});
 
@@ -1010,7 +1010,7 @@ if (reversed == null) { reversed = false; }
 	this.MainVideoId.name = "MainVideoId";
 	this.MainVideoId.setTransform(960,540,4.8,3.6,0,0,0,200,150);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.MainVideoId},{t:this.countdownVid},{t:this.triangleBg},{t:this.rectangleBg}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.MainVideoId},{t:this.countdownVid},{t:this.rectangleBg},{t:this.triangleBg}]}).wait(1));
 
 	this._renderFirstFrame();
 
@@ -1025,10 +1025,12 @@ lib.properties = {
 	color: "#333333",
 	opacity: 0.00,
 	manifest: [
-		{src:"images/RotateTriangle2Shape_atlas_1.png", id:"RotateTriangle2Shape_atlas_1"},
-		{src:"images/RotateTriangle2Shape_atlas_2.png", id:"RotateTriangle2Shape_atlas_2"},
+		{src:"images/emat61020002_aa_01_atlas_1.png", id:"emat61020002_aa_01_atlas_1"},
+		{src:"images/emat61020002_aa_01_atlas_2.png", id:"emat61020002_aa_01_atlas_2"},
 		{src:"sounds/ClickBtnSound.mp3", id:"ClickBtnSound"},
 		{src:"sounds/countDownSound.mp3", id:"countDownSound"},
+		{src:"sounds/rectangleSound.mp3", id:"rectangleSound"},
+		{src:"sounds/triangleSound.mp3", id:"triangleSound"},
 		{src:"https://code.jquery.com/jquery-3.4.1.min.js", id:"lib/jquery-3.4.1.min.js"},
 		{src:"components/sdk/anwidget.js", id:"sdk/anwidget.js"},
 		{src:"components/video/src/video.js", id:"an.Video"}
