@@ -3,8 +3,8 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"RotateTriangle2Shape_atlas_1", frames: [[0,0,1921,1081]]},
-		{name:"RotateTriangle2Shape_atlas_2", frames: [[0,1083,465,465],[0,0,1921,1081]]}
+		{name:"emat61060102_aa_01_atlas_1", frames: [[0,0,1921,1081]]},
+		{name:"emat61060102_aa_01_atlas_2", frames: [[0,1083,465,465],[0,0,1921,1081]]}
 ];
 
 
@@ -29,21 +29,21 @@ lib.ssMetadata = [
 
 
 (lib.CachedBmp_2 = function() {
-	this.initialize(ss["RotateTriangle2Shape_atlas_2"]);
+	this.initialize(ss["emat61060102_aa_01_atlas_2"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.자산2 = function() {
-	this.initialize(ss["RotateTriangle2Shape_atlas_1"]);
+	this.initialize(ss["emat61060102_aa_01_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.자산3 = function() {
-	this.initialize(ss["RotateTriangle2Shape_atlas_2"]);
+	this.initialize(ss["emat61060102_aa_01_atlas_2"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
@@ -466,7 +466,7 @@ if (reversed == null) { reversed = false; }
 				
 				setTimeout(function() {
 					methods.hideCanvas(currentId, root);
-				}, 2000);
+				}, 1000);
 			},
 			hideCanvas: function(currentId, root) {
 				
@@ -522,9 +522,10 @@ if (reversed == null) { reversed = false; }
 					params.find.triangle = true;
 					
 					setTimeout(function() {
-						elm.title.angle3.style.display = 'block';
+						//elm.title.angle3.style.display = 'block';
+						
 						methods.removeCountDown('#angle3', this);	
-					}, 2000);
+					}, 1000);
 					
 		
 				} else {
@@ -556,22 +557,27 @@ if (reversed == null) { reversed = false; }
 					
 					params.find.rectangle = true;
 					
+					
+					elm.title.angle3.addEvent
+					
+					
+					
 					setTimeout(function() {
-						elm.title.angle4.style.display = 'block';
-						elm.title.angle5.style.display = 'block';
+						//elm.title.angle4.style.display = 'block';
+						//elm.title.angle5.style.display = 'block';
 						methods.removeCountDown('#angle4', this);	
-					}, 2000);
+					}, 1000);
 				}
 				
 			},
 			updateVid: function(event) {
 				const vid = event.currentTarget;
-				if (vid.currentTime > 77 && vid.currentTime < 78) {
+				if (vid.currentTime > 78 && vid.currentTime < 79) {
 					vid.pause();
 					elm.button.reload.angle3.visible = true;
 				}
 				
-				if (vid.currentTime > 132 && vid.currentTime < 133) {
+				if (vid.currentTime > 133 && vid.currentTime < 134) {
 					vid.pause();
 					elm.button.reload.angle4.visible = true;
 					elm.button.reload.angle5.visible = true;
@@ -661,7 +667,7 @@ if (reversed == null) { reversed = false; }
 						elm.selectedObj.push(obj[0].uuid);
 					}
 					
-					elm.title.angle4.style.display = 'block';
+					//elm.title.angle4.style.display = 'block';
 				}
 				
 				if (obj[1].rotation.x > 1.45 || obj[1].rotation.x < -1.45) {
@@ -669,7 +675,7 @@ if (reversed == null) { reversed = false; }
 						elm.selectedObj.push(obj[1].uuid);
 					}
 					
-					elm.title.angle5.style.display = 'block';
+					//elm.title.angle5.style.display = 'block';
 				}
 				
 				console.log(elm.selectedObj);
@@ -776,7 +782,7 @@ if (reversed == null) { reversed = false; }
 				const obj = el.children[0];
 				
 				if (obj.rotation.x > 1.45 || obj.rotation.x < -1.45) {
-					elm.title.angle3.style.display = 'block';
+					//elm.title.angle3.style.display = 'block';
 					methods.removeCountDown('#angle3', this);
 				}
 				
@@ -958,7 +964,7 @@ if (reversed == null) { reversed = false; }
 					const vid = document.querySelector('#MainVideoId');
 					if (vid) {
 						//vid.play();
-						//vid.currentTime = 130;
+						//vid.currentTime = 70;
 						vid.addEventListener('timeupdate', handlers.updateVid);
 					}
 				}, 100);
@@ -976,12 +982,12 @@ if (reversed == null) { reversed = false; }
 	// Layer_1
 	this.showRectangle2 = new lib.playBtn();
 	this.showRectangle2.name = "showRectangle2";
-	this.showRectangle2.setTransform(1320.95,351.9,0.8607,0.8607,0,0,0,104.5,116.6);
+	this.showRectangle2.setTransform(1322.35,353.45,0.8198,0.8196,0,0,0,105.8,116.9);
 	new cjs.ButtonHelper(this.showRectangle2, 0, 1, 1);
 
 	this.showRectangle1 = new lib.playBtn();
 	this.showRectangle1.name = "showRectangle1";
-	this.showRectangle1.setTransform(644.9,430.5,0.864,0.864,0,0,0,116.5,116.5);
+	this.showRectangle1.setTransform(644.6,434,0.8196,0.8196,0,0,0,116.5,116.5);
 	new cjs.ButtonHelper(this.showRectangle1, 0, 1, 1);
 
 	this.showTriangle = new lib.playBtn();
@@ -1025,8 +1031,8 @@ lib.properties = {
 	color: "#333333",
 	opacity: 0.00,
 	manifest: [
-		{src:"images/RotateTriangle2Shape_atlas_1.png", id:"RotateTriangle2Shape_atlas_1"},
-		{src:"images/RotateTriangle2Shape_atlas_2.png", id:"RotateTriangle2Shape_atlas_2"},
+		{src:"images/emat61060102_aa_01_atlas_1.png", id:"emat61060102_aa_01_atlas_1"},
+		{src:"images/emat61060102_aa_01_atlas_2.png", id:"emat61060102_aa_01_atlas_2"},
 		{src:"sounds/ClickBtnSound.mp3", id:"ClickBtnSound"},
 		{src:"sounds/countDownSound.mp3", id:"countDownSound"},
 		{src:"https://code.jquery.com/jquery-3.4.1.min.js", id:"lib/jquery-3.4.1.min.js"},

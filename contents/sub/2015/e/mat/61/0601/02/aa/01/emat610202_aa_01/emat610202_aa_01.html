@@ -11,10 +11,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="authoring-tool" content="Adobe_Animate_CC">
-<title>RotateTriangle2Shape</title>
+<title>emat610202_aa_01</title>
 <!-- write your code here -->
-<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-<script src="../../../../../../../include/mat/emat61060102_aa_01.js"></script>
+<script src="../../../../../../../include/libs/js/createjs-2015.11.26.min.js"></script>
+<script src="../../../../../../../include/mat/emat610202_aa_01.js"></script>
 <script type='text/javascript' src='libs/three.min.js'></script>
 <script type='text/javascript' src='libs/OrbitControls.js'></script>
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/three.meshline/1.4.0/THREE.MeshLine.min.js'></script>
@@ -61,7 +61,6 @@ function handleComplete(evt,comp) {
 		createjs.Ticker.framerate = lib.properties.fps;
 		createjs.Ticker.addEventListener("tick", stage);
 	}	    
-	//Code to support hidpi screens and responsive scaling.
 	function makeResponsive(isResp, respDim, isScale, scaleType) {		
 		var lastW, lastH, lastS=1;		
 		window.addEventListener('resize', resizeCanvas);		
@@ -97,7 +96,9 @@ function handleComplete(evt,comp) {
 			stage.tickOnUpdate = true;		
 		}
 	}
-	makeResponsive(true,'both',true,1);
+	makeResponsive(true,'both',true,1);   
+	//Code to support hidpi screens and responsive scaling.
+	
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
 }
