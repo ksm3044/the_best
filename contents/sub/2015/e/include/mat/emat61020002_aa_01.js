@@ -256,6 +256,12 @@ if (reversed == null) { reversed = false; }
 		
 		const methods = {
 			calcSize: function() {
+				const vid = document.querySelector('#canvas');
+				if (vid) {
+					return [vid.clientWidth, vid.clientHeight]
+				}
+				
+				
 				let width, height;
 				const ratio = 1.777777777777778;
 				if (window.innerWidth >= 1920 && window.innerHeight >= 1080) {
@@ -358,7 +364,6 @@ if (reversed == null) { reversed = false; }
 						group.add(mesh);
 						info.scene.add(group);
 						
-						
 						if (child.position) {
 							group.position.x = child.position.x;
 							group.position.y = child.position.y;
@@ -384,6 +389,26 @@ if (reversed == null) { reversed = false; }
 				params.controls.enabled = false;
 				params.renderer.width = renderer.domElement.width;
 				params.renderer.height = renderer.domElement.height; 
+				
+				
+				window.addEventListener('resize', function() {
+						const size = methods.calcSize();
+						sceneInfo.camera.aspect = size[0] / size[1]
+						sceneInfo.camera.updateProjectionMatrix()
+						renderer.setSize(size[0], size[1])
+						render()
+					
+						const elm5 = document.querySelector('#angle5Title');
+						if (elm5) {
+							elm5.style.left = (size[0] - 400) + 'px';
+						}
+						
+						const elm3 = document.querySelector('#angle3Title');
+						if (elm3) {
+							elm3.style.left = (size[0] - 400) + 'px';	
+						}
+					
+				}, false)
 				
 				function animate() {
 		          requestAnimationFrame(animate)
@@ -889,10 +914,10 @@ if (reversed == null) { reversed = false; }
 			html += '<path d="M1240 753 c-159 -4 -162 -5 -158 -51 l3 -37 142 2 142 3 3 -78 3 -77 36 -3 c21 -2 40 2 46 10 6 7 13 63 14 123 l4 110 -60 1 c-33 0 -112 -1 -175 -3z"/>';
 			html += '</g></svg>'
 			html += '</div>';
-			
+			svg2.style.width = '300px';
 			svg2.innerHTML = html;
 			svg2.style.top = '15vh';
-			svg2.style.left = (size[0] - 700) + 'px';	
+			svg2.style.left = (size[0] - 600) + 'px';	
 			
 			svg2.style.display = 'none';
 			svg2.style.zIndex = '20';
@@ -925,11 +950,8 @@ if (reversed == null) { reversed = false; }
 			svg3.style.top = '15vh';
 			elm.title.angle5 = svg3;
 			
-			if (size[0] > 800) {
-				svg3.style.left = (size[0] - 600) + 'px';	
-			} else {
-				svg3.style.right = '10vw';
-			}
+			svg3.style.width = '300px';
+			svg3.style.left = (size[0] - 400) + 'px';	
 			svg3.style.display = 'none';
 			svg3.style.zIndex = '20';
 			document.body.appendChild(svg3);
@@ -1025,15 +1047,15 @@ lib.properties = {
 	color: "#333333",
 	opacity: 0.00,
 	manifest: [
-		{src:"images/emat61020002_aa_01_atlas_1.png", id:"emat61020002_aa_01_atlas_1"},
-		{src:"images/emat61020002_aa_01_atlas_2.png", id:"emat61020002_aa_01_atlas_2"},
-		{src:"sounds/ClickBtnSound.mp3", id:"ClickBtnSound"},
-		{src:"sounds/countDownSound.mp3", id:"countDownSound"},
-		{src:"sounds/rectangleSound.mp3", id:"rectangleSound"},
-		{src:"sounds/triangleSound.mp3", id:"triangleSound"},
-		{src:"https://code.jquery.com/jquery-3.4.1.min.js", id:"lib/jquery-3.4.1.min.js"},
-		{src:"components/sdk/anwidget.js", id:"sdk/anwidget.js"},
-		{src:"components/video/src/video.js", id:"an.Video"}
+		{src:"images/emat61020002_aa_01_atlas_1.png?1669717131678", id:"emat61020002_aa_01_atlas_1"},
+		{src:"images/emat61020002_aa_01_atlas_2.png?1669717131678", id:"emat61020002_aa_01_atlas_2"},
+		{src:"sounds/ClickBtnSound.mp3?1669717131706", id:"ClickBtnSound"},
+		{src:"sounds/countDownSound.mp3?1669717131706", id:"countDownSound"},
+		{src:"sounds/rectangleSound.mp3?1669717131706", id:"rectangleSound"},
+		{src:"sounds/triangleSound.mp3?1669717131706", id:"triangleSound"},
+		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1669717131706", id:"lib/jquery-3.4.1.min.js"},
+		{src:"components/sdk/anwidget.js?1669717131706", id:"sdk/anwidget.js"},
+		{src:"components/video/src/video.js?1669717131706", id:"an.Video"}
 	],
 	preloads: []
 };
