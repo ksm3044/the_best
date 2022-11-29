@@ -3,8 +3,8 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"emat61060102_aa_01_atlas_1", frames: [[0,0,1921,1081]]},
-		{name:"emat61060102_aa_01_atlas_2", frames: [[0,1083,465,465],[0,0,1921,1081]]}
+		{name:"RotateTriangle2Shape_atlas_1", frames: [[0,0,1921,1081]]},
+		{name:"RotateTriangle2Shape_atlas_2", frames: [[0,1083,465,465],[0,0,1921,1081]]}
 ];
 
 
@@ -28,22 +28,22 @@ lib.ssMetadata = [
 
 
 
-(lib.CachedBmp_2 = function() {
-	this.initialize(ss["emat61060102_aa_01_atlas_2"]);
+(lib.CachedBmp_1 = function() {
+	this.initialize(ss["RotateTriangle2Shape_atlas_2"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.자산2 = function() {
-	this.initialize(ss["emat61060102_aa_01_atlas_1"]);
+	this.initialize(ss["RotateTriangle2Shape_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.자산3 = function() {
-	this.initialize(ss["emat61060102_aa_01_atlas_2"]);
+	this.initialize(ss["RotateTriangle2Shape_atlas_2"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
@@ -140,7 +140,7 @@ if (reversed == null) { reversed = false; }
 	mask.setTransform(116.2,116.2);
 
 	// Layer_3
-	this.instance = new lib.CachedBmp_2();
+	this.instance = new lib.CachedBmp_1();
 	this.instance.setTransform(0,0,0.5,0.5);
 
 	var maskedShapeInstanceList = [this.instance];
@@ -466,7 +466,7 @@ if (reversed == null) { reversed = false; }
 				
 				setTimeout(function() {
 					methods.hideCanvas(currentId, root);
-				}, 1000);
+				}, 2000);
 			},
 			hideCanvas: function(currentId, root) {
 				
@@ -523,9 +523,8 @@ if (reversed == null) { reversed = false; }
 					
 					setTimeout(function() {
 						//elm.title.angle3.style.display = 'block';
-						
 						methods.removeCountDown('#angle3', this);	
-					}, 1000);
+					}, 2000);
 					
 		
 				} else {
@@ -557,16 +556,11 @@ if (reversed == null) { reversed = false; }
 					
 					params.find.rectangle = true;
 					
-					
-					elm.title.angle3.addEvent
-					
-					
-					
 					setTimeout(function() {
 						//elm.title.angle4.style.display = 'block';
 						//elm.title.angle5.style.display = 'block';
 						methods.removeCountDown('#angle4', this);	
-					}, 1000);
+					}, 2000);
 				}
 				
 			},
@@ -1031,8 +1025,8 @@ lib.properties = {
 	color: "#333333",
 	opacity: 0.00,
 	manifest: [
-		{src:"images/emat61060102_aa_01_atlas_1.png", id:"emat61060102_aa_01_atlas_1"},
-		{src:"images/emat61060102_aa_01_atlas_2.png", id:"emat61060102_aa_01_atlas_2"},
+		{src:"images/RotateTriangle2Shape_atlas_1.png", id:"RotateTriangle2Shape_atlas_1"},
+		{src:"images/RotateTriangle2Shape_atlas_2.png", id:"RotateTriangle2Shape_atlas_2"},
 		{src:"sounds/ClickBtnSound.mp3", id:"ClickBtnSound"},
 		{src:"sounds/countDownSound.mp3", id:"countDownSound"},
 		{src:"https://code.jquery.com/jquery-3.4.1.min.js", id:"lib/jquery-3.4.1.min.js"},
