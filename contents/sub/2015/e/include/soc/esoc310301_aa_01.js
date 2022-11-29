@@ -200,7 +200,6 @@ if (reversed == null) { reversed = false; }
 
 
 				if (vid) {
-					this.MainVideoId.currentTime = 160
 					vid.addEventListener('timeupdate', handlers.handleVidDuration.bind(this));
 				}
 			}, 4000)
