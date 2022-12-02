@@ -198,7 +198,6 @@ if (reversed == null) { reversed = false; }
 				root.popupMovie.visible = true;
 				const vid = document.querySelector('#MainVideoId');
 
-				vid.currentTime = 160
 				
 				
 				if (vid) {
